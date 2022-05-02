@@ -2,9 +2,12 @@ import traceback
 import sys
 import os
 
-from main import Predictor
+try:
+  from network import Predictor
 
-net = Predictor()
+  net = Predictor()
+except:
+  traceback.print_exc()
 
 def load_file(path):
   with open(os.path.abspath(__file__ + '/../' + path)) as f:
