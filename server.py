@@ -44,7 +44,8 @@ def application(environ, start_response):
           .replace('%LANG%', data[2])
           .replace('%RATING%', '%.1f' % rating))
       except:
-        content += '<div id="error">%s</div>' % traceback.format_exc()
+        content = content.replace('<!--ERROR PLACEHOLDER-->',
+          '<div id="error">%s</div>' % traceback.format_exc().replace('\n', '<br>'))
 
   else:
     status = '302 Moved Temporarily'

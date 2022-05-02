@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<!-- Site for neural network predicting rating of the task by time and memory of its accepted solution. -->
+<!-- based on https://github.com/ProgramCrafter/NeuralNetworksServer.git -->
 <!-- (c) ProgramCrafter, 2022 -->
 
 <html>
@@ -60,12 +62,23 @@
         opacity: 1;
         font-size: 22px;
       }
+      
+      #error {
+        background-color: #636;
+        color: #FDD;
+        
+        font-size: 16px;
+        
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+      }
     </style>
     <title>CF Rating Predictor</title>
   </head>
   <body>
     <!-- based on  https://gitlab.com/ProgramCrafter/neural-networks.git -->
-    <!-- mirror on https://github.com/ProgramCrafter/neural-networks.git -->
+    <!-- mirror on https://github.com/ProgramCrafter/NeuralNetworks.git -->
     <div id="title">
       Сложная, пожалуйста, задачка?
     </div>
@@ -85,5 +98,6 @@
       <input type="text" readonly placeholder="Язык программирования: %LANG%">
       <input type="text" readonly placeholder="Рейтинг задачи: %RATING%">
     </form>
+    <!--ERROR PLACEHOLDER-->
   </body>
 </html>
