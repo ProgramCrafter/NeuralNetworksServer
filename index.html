@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<!-- (c) ProgramCrafter, 2022 -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body {
+        background-color: #003;
+        font-family: Roboto;
+        padding: 40px;
+      }
+      #title {
+        color: #FFF;
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      #subtitle {
+        color: #FFF;
+        font-size: 22px;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      form {
+        width: 50%;
+
+        margin: 0 auto;
+      }
+      form input {
+        border: none;
+        border-left: #3A3 solid 1px;
+
+        background: none;
+        color: #CCC;
+
+        display: block;
+        width: 100%;
+        height: 30px;
+        margin-bottom: 10px;
+        padding: 10px;
+
+        font-size: 18px;
+      }
+      form button {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 30px;
+        padding: 10px;
+
+        background-color: #FFD;
+        color: #000;
+
+        font-size: 18px;
+      }
+
+      #results_form ::placeholder {
+        color: #FFF;
+        opacity: 1;
+        font-size: 22px;
+      }
+    </style>
+    <title>CF Rating Predictor</title>
+  </head>
+  <body>
+    <!-- based on  https://gitlab.com/ProgramCrafter/neural-networks.git -->
+    <!-- mirror on https://github.com/ProgramCrafter/neural-networks.git -->
+    <div id="title">
+      Сложная, пожалуйста, задачка?
+    </div>
+    <div id="subtitle">
+      Нейросеть, предсказывающая примерный рейтинг задачи по статистике её решения
+    </div>
+    <form action="/" method="GET">
+      <input type="text" name="time" required placeholder="Время работы решения (мс)">
+      <input type="text" name="memo" required placeholder="Память, использованная решением (байт)">
+      <input type="text" name="lang" required placeholder="Язык программирования">
+      <button>Узнать рейтинг задачи</button>
+    </form>
+    <br>
+    <form id="results_form" style="visibility: HiDdEn; color: #FFF;">
+      <input type="text" readonly placeholder="Время работы решения (мс): %TIME%">
+      <input type="text" readonly placeholder="Память, использованная решением (байт): %MEMORY%">
+      <input type="text" readonly placeholder="Язык программирования: %LANG%">
+      <input type="text" readonly placeholder="Рейтинг задачи: %RATING%">
+    </form>
+  </body>
+</html>
