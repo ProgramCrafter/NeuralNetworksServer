@@ -13,12 +13,14 @@ def load_file(path):
   with open(os.path.abspath(__file__ + '/../' + path)) as f:
     return f.read()
 
+expected_location = '/cf-task-rating'
+
 def application(environ, start_response):
   response_headers = [
     ('Content-Type', 'text/html'),
   ]
 
-  if environ.get('PATH_INFO') == '/':
+  if environ.get('PATH_INFO') == expected_location:
     status = '200 OK'
     content = load_file('index.html')
 
@@ -50,12 +52,10 @@ def application(environ, start_response):
   else:
     status = '302 Moved Temporarily'
 
-    qs = '?' + environ['QUERY_STRING'] if 'QUERY_STRING' in environ else ''
+    qs = '?' + environ['QUERY_STRING'] if environ['QUERY_STRING'] else ''
 
-    response_headers.append(('Location', '/' + qs))
+    response_headers.append(('Location', expected_location + qs))
     content = ''
-
-  content += '<!-- %s -->' % str(environ)
 
   response_headers.append(('Content-Length', str(len(content))))
 
