@@ -86,9 +86,9 @@
       Нейросеть, предсказывающая примерный рейтинг задачи по статистике её решения
     </div>
     <form action="/" method="GET">
-      <input type="text" name="time" required placeholder="Время работы решения (мс)">
-      <input type="text" name="memo" required placeholder="Память, использованная решением (байт)">
-      <input type="text" name="lang" required placeholder="Язык программирования">
+      <input type="text" name="time" required autocomplete="off" pattern="^\d+$" placeholder="Время работы решения (мс)">
+      <input type="text" name="memo" required autocomplete="off" pattern="^\d+$" placeholder="Память, использованная решением (байт)">
+      <input type="text" name="lang" required autocomplete="off" placeholder="Язык программирования">
       <button>Узнать рейтинг задачи</button>
     </form>
     <br>
