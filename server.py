@@ -20,9 +20,13 @@ def application(environ, start_response):
     ('Content-Type', 'text/html'),
   ]
 
-  if environ.get('PATH_INFO') == expected_location:
+  if environ['PATH_INFO'] == expected_location:
     status = '200 OK'
-    content = load_file('index.html')
+    
+    if 'ru' in environ.get('HTTP_ACCEPT_LANGUAGE', ''):
+      content = load_file('index.html')
+    else:
+      content = load_file('index-en.html')
 
     if environ['QUERY_STRING']:
       try:
