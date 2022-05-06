@@ -1,3 +1,6 @@
 [submodule "neural-networks"]
 	path = neural-networks
 	url = https://gitlab.com/ProgramCrafter/neural-networks.git
+[submodule "neural-networks-subtime"]
+	path = neural-networks-subtime
+	url = https://gitlab.com/ProgramCrafter/neural-networks.git

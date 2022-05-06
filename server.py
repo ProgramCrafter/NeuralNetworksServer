@@ -31,17 +31,35 @@ def application(environ, start_response):
     if environ['QUERY_STRING']:
       try:
         query = environ['QUERY_STRING'].split('&')
-        data = [0, 0, '']
-
-        for q in query:
-          if q.startswith('time='):
-            data[0] = int(q.removeprefix('time='))
-          elif q.startswith('memo='):
-            data[1] = int(q.removeprefix('memo='))
-          elif q.startswith('lang='):
-            data[2] = q.removeprefix('lang=').replace('+', ' ').replace('%2B', '+')
-
-        rating = net.predict(*data)
+        
+        version = 'v=1' in query
+        
+        if version:
+          data = [0, 0, '']
+          
+          for q in query:
+            if q.startswith('time='):
+              data[0] = int(q.removeprefix('time='))
+            elif q.startswith('memo='):
+              data[1] = int(q.removeprefix('memo='))
+            elif q.startswith('lang='):
+              data[2] = q.removeprefix('lang=').replace('+', ' ').replace('%2B', '+')
+          
+          rating = net.predict(*data)
+        else:
+          data = [0, 0, '', 0]
+          
+          for q in query:
+            if q.startswith('time='):
+              data[0] = int(q.removeprefix('time='))
+            elif q.startswith('memo='):
+              data[1] = int(q.removeprefix('memo='))
+            elif q.startswith('lang='):
+              data[2] = q.removeprefix('lang=').replace('+', ' ').replace('%2B', '+')
+            elif q.startswith('subtime='):
+              data[3] = int(q.removeprefix('subtime='))
+          
+          rating = net.predict_v1(*data)
 
         content = (content
           .replace('HiDdEn', 'visible')
