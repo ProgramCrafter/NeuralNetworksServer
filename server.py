@@ -32,9 +32,9 @@ def application(environ, start_response):
       try:
         query = environ['QUERY_STRING'].split('&')
         
-        version = 'v=1' in query
+        version = ('v=1' in query) + 0
         
-        if version:
+        if version == 0:
           data = [0, 0, '']
           
           for q in query:
