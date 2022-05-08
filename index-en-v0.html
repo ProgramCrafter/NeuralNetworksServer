@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<!-- Site for neural network predicting rating of the task by time and memory of its accepted solution. -->
+<!-- based on https://github.com/ProgramCrafter/NeuralNetworksServer.git -->
+<!-- (c) ProgramCrafter, 2022 -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body {
+        background-color: #003;
+        font-family: Roboto;
+        padding: 40px;
+      }
+      #title {
+        color: #FFF;
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      #subtitle {
+        color: #FFF;
+        font-size: 22px;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      #subsubtitle {
+        color: #DFD !important;
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      #subsubtitle a {
+        color: inherit;
+      }
+      form {
+        width: 50%;
+
+        margin: 0 auto;
+      }
+      form input {
+        border: none;
+        border-left: #3A3 solid 1px;
+
+        background: none;
+        color: #CCC;
+
+        display: block;
+        width: 100%;
+        height: 30px;
+        margin-bottom: 10px;
+        padding: 10px;
+
+        font-size: 18px;
+      }
+      form button {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 30px;
+        padding: 10px;
+
+        background-color: #FFD;
+        color: #000;
+
+        font-size: 18px;
+      }
+
+      #results_form ::placeholder {
+        color: #FFF;
+        opacity: 1;
+        font-size: 22px;
+      }
+      
+      #error {
+        background-color: #636;
+        color: #FDD;
+        
+        font-size: 16px;
+        
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+      }
+    </style>
+    <title>CF Rating Predictor</title>
+  </head>
+  <body>
+    <!-- based on  https://gitlab.com/ProgramCrafter/neural-networks.git -->
+    <!-- mirror on https://github.com/ProgramCrafter/NeuralNetworks.git -->
+    <div id="title">
+      Is task that hard?
+    </div>
+    <div id="subtitle">
+      Neural network predicting rating of CF task using solution parameters
+    </div>
+    <div id="subsubtitle">
+      <a href="/cf-tasks-rating?v=1">Precision is better if you supply time of submission</a>
+    </div>
+    <form action="/" method="GET">
+      <input type="text" name="time" required autocomplete="off" pattern="^\d+$" placeholder="Time used by accepted solution (ms)">
+      <input type="text" name="memo" required autocomplete="off" pattern="^\d+$" placeholder="Memory used by the solution (bytes)">
+      <input type="text" name="lang" required autocomplete="off" placeholder="Language of the solution">
+      <button>See rating of the task</button>
+    </form>
+    <br>
+    <form id="results_form" style="visibility: HiDdEn; color: #FFF;">
+      <input type="text" readonly placeholder="Time used by accepted solution (ms): %TIME%">
+      <input type="text" readonly placeholder="Memory used by the solution (bytes): %MEMORY%">
+      <input type="text" readonly placeholder="Language of the solution: %LANG%">
+      <input type="text" readonly placeholder="Approximate task rating: %RATING%">
+    </form>
+    <!--ERROR PLACEHOLDER-->
+  </body>
+</html>

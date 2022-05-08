@@ -25,6 +25,15 @@
         text-align: center;
         margin-bottom: 25px;
       }
+      #subsubtitle {
+        color: #DFD !important;
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      #subsubtitle a {
+        color: inherit;
+      }
       form {
         width: 50%;
 
@@ -80,24 +89,28 @@
     <!-- based on  https://gitlab.com/ProgramCrafter/neural-networks.git -->
     <!-- mirror on https://github.com/ProgramCrafter/NeuralNetworks.git -->
     <div id="title">
-      Is task that hard?
+      Сложная, пожалуйста, задачка?
     </div>
     <div id="subtitle">
-      Neural network predicting rating of CF task using solution parameters
+      Нейросеть, предсказывающая примерный рейтинг задачи по статистике её решения
     </div>
-    <form action="/" method="GET">
-      <input type="text" name="time" required autocomplete="off" pattern="^\d+$" placeholder="Time used by accepted solution (ms)">
-      <input type="text" name="memo" required autocomplete="off" pattern="^\d+$" placeholder="Memory used by the solution (bytes)">
-      <input type="text" name="lang" required autocomplete="off" placeholder="Language of the solution">
-      <button>See rating of the task</button>
+    <div id="subsubtitle">
+      <a href="/cf-tasks-rating?v=1">Точность можно повысить, если знать время отсылки решения</a>
+    </div>
+    <form action="/cf-tasks-rating" method="GET">
+      <input type="text" name="time" required autocomplete="off" pattern="^\d+$" placeholder="Время работы решения (мс)">
+      <input type="text" name="memo" required autocomplete="off" pattern="^\d+$" placeholder="Память, использованная решением (байт)">
+      <input type="text" name="lang" required autocomplete="off" placeholder="Язык программирования">
+      <button>Узнать рейтинг задачи</button>
     </form>
     <br>
     <form id="results_form" style="visibility: HiDdEn; color: #FFF;">
-      <input type="text" readonly placeholder="Time used by accepted solution (ms): %TIME%">
-      <input type="text" readonly placeholder="Memory used by the solution (bytes): %MEMORY%">
-      <input type="text" readonly placeholder="Language of the solution: %LANG%">
-      <input type="text" readonly placeholder="Approximate task rating: %RATING%">
+      <input type="text" readonly placeholder="Время работы решения (мс): %TIME%">
+      <input type="text" readonly placeholder="Память, использованная решением (байт): %MEMORY%">
+      <input type="text" readonly placeholder="Язык программирования: %LANG%">
+      <input type="text" readonly placeholder="Рейтинг задачи: %RATING%">
     </form>
+    
     <!--ERROR PLACEHOLDER-->
   </body>
 </html>

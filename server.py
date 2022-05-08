@@ -22,17 +22,17 @@ def application(environ, start_response):
 
   if environ['PATH_INFO'] == expected_location:
     status = '200 OK'
+        
+    version = ('v=1' in environ['QUERY_STRING'].split('&')) + 0
     
     if 'ru' in environ.get('HTTP_ACCEPT_LANGUAGE', ''):
-      content = load_file('index.html')
+      content = load_file('index-v%d.html' % version)
     else:
-      content = load_file('index-en.html')
+      content = load_file('index-en-v%d.html' % version)
 
     if environ['QUERY_STRING']:
       try:
         query = environ['QUERY_STRING'].split('&')
-        
-        version = ('v=1' in query) + 0
         
         if version == 0:
           data = [0, 0, '']
